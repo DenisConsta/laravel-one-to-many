@@ -27,7 +27,7 @@
                     <td> {{ $project->name }}
                         @if ($project->type?->name)
                             <a href=" {{ route('admin.projects.allOf', $project->type) }} "
-                                class="badge text-bg-info text-decoration-none" name="tag">{{ $project->type?->name }}
+                                class="badge text-bg-info text-decoration-none" name="tag" value={{$project->type_id}} >{{ $project->type?->name }}
                             </a>
                         @endif
                     </td>

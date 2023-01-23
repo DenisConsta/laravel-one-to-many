@@ -19,33 +19,15 @@ class ProjectController extends Controller
 
     public function index()
     {
-        /* $projects = $this->search() ?? Project::orderBy('id', 'desc')->paginate(10);
-
-        $direction = 'desc';
-        return view('admin.projects.index', compact('projects', 'direction')); */
-
-        $projects =  Project::sortable()->filter(request(['search']))->paginate(10);
+        $projects =  Project::sortable()->filter([request(['search'])])->paginate(10);
         $direction = 'desc';
 
         return view('admin.projects.index', compact('projects', 'direction'));
     }
 
     public function allOf($type){
-        $projects = Project::where('type_id', $type)->Paginate(10);
+        $projects = Project::sortable()->where('type_id', $type)->Paginate(10);
         $direction = 'desc';
-        return view('admin.projects.index', compact('projects', 'direction'));
-    }
-
-    public function orderby($column, $direction)
-    {
-        /* $direction = $direction === 'desc' ? 'asc' : 'desc';
-        $projects = $this->search() ?? Project::orderby($column, $direction)->paginate(10);
-
-        return view('admin.projects.index', compact('projects', 'direction')); */
-
-        $direction = $direction === 'desc' ? 'asc' : 'desc';
-        $projects =  Project::filter(request(['search']))->orderBy($column, $direction)->paginate(10);
-
         return view('admin.projects.index', compact('projects', 'direction'));
     }
 
