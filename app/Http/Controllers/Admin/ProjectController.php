@@ -24,7 +24,7 @@ class ProjectController extends Controller
         $direction = 'desc';
         return view('admin.projects.index', compact('projects', 'direction')); */
 
-        $projects =  Project::filter(request(['search']))->paginate(10);
+        $projects =  Project::sortable()->filter(request(['search']))->paginate(10);
         $direction = 'desc';
 
         return view('admin.projects.index', compact('projects', 'direction'));

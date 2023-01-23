@@ -10,10 +10,13 @@
     <table class="table table-striped table-dark">
         <thead>
             <tr>
-                <th scope="col"> <a href=" {{ route('admin.projects.orderby', ['id', $direction]) }} ">ID</a> </th>
+                {{--  <th scope="col"> <a href=" {{ route('admin.projects.orderby', ['id', $direction]) }} ">ID</a> </th>
                 <th scope="col"> <a href=" {{ route('admin.projects.orderby', ['name', $direction]) }} ">Name</a> </th>
                 <th scope="col"> <a href=" {{ route('admin.projects.orderby', ['client_name', $direction]) }} ">Client</a>
-                </th>
+                </th> --}}
+                <th scope="col"> @sortablelink('id') </th>
+                <th scope="col"> @sortablelink('name') </th>
+                <th scope="col"> @sortablelink('client_name')</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -23,7 +26,9 @@
                     <td> {{ $project->id }} </td>
                     <td> {{ $project->name }}
                         @if ($project->type?->name)
-                            <a href=" {{route('admin.projects.allOf', $project->type)}} " class="badge text-bg-info text-decoration-none" name="tag" >{{ $project->type?->name }} </a>
+                            <a href=" {{ route('admin.projects.allOf', $project->type) }} "
+                                class="badge text-bg-info text-decoration-none" name="tag">{{ $project->type?->name }}
+                            </a>
                         @endif
                     </td>
                     <td> {{ $project->client_name }} </td>
@@ -37,7 +42,7 @@
                             @include('admin.partials.form-delete', [
                                 'route' => 'projects',
                                 'message' => "Confermi l'eliminazione del progetto : <strong>$project->name</strong>",
-                                'entity' => $project
+                                'entity' => $project,
                             ])
 
                         </div>
