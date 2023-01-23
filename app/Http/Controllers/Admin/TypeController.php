@@ -90,7 +90,7 @@ class TypeController extends Controller
         $val['slug'] = Str::slug($val['name']);
         $type->update($val);
 
-        return redirect()->back()->with('message', $request->name . ' updated successufully');
+        return redirect()->back()->with('success', $request->name . ' updated successufully');
     }
 
     /**

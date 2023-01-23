@@ -21,8 +21,9 @@
             @foreach ($projects as $project)
                 <tr>
                     <td> {{ $project->id }} </td>
-                    <td> {{ $project->name }} @if ($project->type?->name)
-                            <span class="badge text-bg-info">{{ $project->type?->name }}
+                    <td> {{ $project->name }}
+                        @if ($project->type?->name)
+                            <a href=" {{route('admin.projects.allOf', $project->type)}} " class="badge text-bg-info text-decoration-none" name="tag" >{{ $project->type?->name }} </a>
                         @endif
                     </td>
                     <td> {{ $project->client_name }} </td>

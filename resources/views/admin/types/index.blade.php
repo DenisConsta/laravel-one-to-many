@@ -34,7 +34,7 @@
                             @method('PATCH')
                             <input class="border-0 bg-dark text-light" type="text" name="name"
                                 value=" {{ $type->name }} ">
-                            <button type="submit" class="btn btn-warning text-light">Update</button>
+                            <button type="submit" class="btn btn-warning text-light"><i class="fa-regular fa-pen-to-square"></i></button>
                         </form>
 
                         @include('admin.partials.form-delete', [
