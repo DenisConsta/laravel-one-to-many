@@ -22,7 +22,7 @@ class ProjectController extends Controller
         $projects = $this->search() ?? Project::orderBy('id', 'desc')->paginate(10);
 
         $direction = 'desc';
-        return view('projects.index', compact('projects', 'direction'));
+        return view('admin.projects.index', compact('projects', 'direction'));
     }
 
     public function orderby($column, $direction)
@@ -30,7 +30,7 @@ class ProjectController extends Controller
         $direction = $direction === 'desc' ? 'asc' : 'desc';
         $projects = $this->search() ?? Project::orderby($column, $direction)->paginate(10);
 
-        return view('projects.index', compact('projects', 'direction'));
+        return view('admin.projects.index', compact('projects', 'direction'));
     }
 
     public function search()
@@ -50,7 +50,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('projects.create', compact('types'));
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -81,7 +81,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -93,7 +93,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**

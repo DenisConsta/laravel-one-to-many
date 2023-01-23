@@ -20,6 +20,12 @@
             @endif
             "><a href=" {{route('admin.projects.create')}} "><i class="fa-solid fa-plus"></i> New Project</a></li>
 
+            <li class="
+            @if (Route::currentRouteName() == 'admin.types.index')
+                active
+            @endif
+            "><a href=" {{route('admin.types.index')}} "><i class="fa-solid fa-plus"></i> Types</a></li>
+
 
 
         </ul>

@@ -33,16 +33,12 @@
                             <a href=" {{ route('admin.projects.edit', $project) }} " title="edit"
                                 class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            @include('admin.partials.form-delete')
-                            {{-- <form class="d-inline" action=" {{ route('admin.projects.destroy', $project) }} " method="POST"
-                                onsubmit="return confirm('Sei sicuro di voler eliminare {{ $project->name }} ')">
-                                @csrf
-                                @method('DELETE')
+                            @include('admin.partials.form-delete', [
+                                'route' => 'projects',
+                                'message' => "Confermi l'eliminazione del progetto : <strong>$project->name</strong>",
+                                'entity' => $project
+                            ])
 
-                                <button class="btn btn-danger" title="delete">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form> --}}
                         </div>
                     </td>
                 </tr>
