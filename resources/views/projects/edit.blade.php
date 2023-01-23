@@ -55,7 +55,7 @@
                         class="form-control bg-dark text-light @error('client_name')
                     is-invalid  @enderror"
                         id="client_name" placeholder="inserire il client_name "
-                        value=" {{  old('client_name', $project->client_name) }} ">
+                        value=" {{ old('client_name', $project->client_name) }} ">
                     <div class="invalid-feedback">
                         @error('client_name')
                             {{ $message }}
@@ -63,12 +63,26 @@
                     </div>
                 </div>
 
+                {{-- ? types --}}
+                <div class="mb-3">
+                    <label for="types" class="form-label">Type</label>
+                    <select name="type_id" class="form-select bg-dark text-light" aria-label="Default select example">
+                        <option value="">Selezionare una tipologia</option>
+                        @foreach ($types as $type)
+                            <option @if ($type->id == old('type_id', $project->$type?->id)) selected @endif value="{{ $type->id }}">
+                                {{ $type->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 {{-- ? summary --}}
                 <div class="mb-3 text-dark">
                     <label for="summary" class="form-label">summary</label>
 
-                    <textarea name="summary" id="text" rows="10" class=" @error('summary')
-                    is-invalid  @enderror">{{old('summary', $project->summary)}}</textarea>
+                    <textarea name="summary" id="text" rows="10"
+                        class=" @error('summary')
+                    is-invalid  @enderror">{{ old('summary', $project->summary) }}</textarea>
 
                     {{-- <input type="text" name="summary"
                         class="form-control bg-dark text-light @error('summary')
